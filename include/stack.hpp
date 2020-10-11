@@ -19,38 +19,36 @@ class Node {
 
 template <typename T>
 class stack {
-  Node<T>* head;
+  Node<T>* top;
  public:
-  stack<T>() : head(nullptr) {}
+  stack<T>() : top(nullptr) {}
 
   ~stack<T>() {
-    while (head != nullptr){
+    while (top != nullptr){
       pop();
     }
   }
 
-  void push(T&& value){
-    head = new Node<T>(value, head);
+  void push(T&& value){ top = new Node<T>(value, top);
   }
 
-  void push(const T& value){
-    head = new Node<T>(value, head);
+  void push(const T& value){ top = new Node<T>(value, top);
   }
 
   void pop(){
-    if (head == nullptr){
-      throw std::runtime_error("Trying to access top() of empty stack");
+    if (top == nullptr){
+      throw std::runtime_error("Trying to pop() from empty stack");
     }
-    Node<T>* old_head = head;
-    head = old_head->prev_ptr;
-    delete old_head;
+    Node<T>* old_top = top;
+    top = old_top->prev_ptr;
+    delete old_top;
   }
 
-  const T& top() const{
-    if (head == nullptr){
-      throw std::runtime_error("Trying to access top() of empty stack");
+  const T& head() const{
+    if (top == nullptr){
+      throw std::runtime_error("Trying to access head() of empty stack");
     }
-    return head->get();
+    return top->get();
   }
 };
 
