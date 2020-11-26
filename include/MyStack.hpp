@@ -1,7 +1,7 @@
 // Copyright 2018 Your Name <your_email>
 
-#ifndef INCLUDE_HEADER_HPP_
-#define INCLUDE_HEADER_HPP_
+#ifndef INCLUDE_STACK_HPP_
+#define INCLUDE_STACK_HPP_
 
 #include <exception>
 #include <iostream>
@@ -25,13 +25,13 @@ class Node {
 };
 
 template <typename T>
-class stack {
+class MyStack {
   Node<T>* top;
 
  public:
-  stack<T>() : top(nullptr) {}
+  MyStack<T>() : top(nullptr) {}
 
-  ~stack<T>() {
+  ~MyStack<T>() {
     while (top != nullptr) {
       pop();
     }
@@ -52,7 +52,7 @@ class stack {
 
   void pop() {
     if (top == nullptr) {
-      throw runtime_error("Trying to pop() from empty stack");
+      throw runtime_error("Trying to pop() from empty MyStack");
     }
     Node<T>* old_top = top;
     top = old_top->prev_ptr;
@@ -62,7 +62,7 @@ class stack {
   //####################################
   T pop_value() {
     if (top == nullptr) {
-      throw runtime_error("Trying to pop() from empty stack");
+      throw runtime_error("Trying to pop() from empty MyStack");
     }
     Node<T>* old_top = top;
     top = old_top->prev_ptr;
@@ -73,10 +73,10 @@ class stack {
 
   const T& head() const {
     if (top == nullptr) {
-      throw runtime_error("Trying to access head() of empty stack");
+      throw runtime_error("Trying to access head() of empty MyStack");
     }
     return top->get();
   }
 };
 
-#endif  // INCLUDE_HEADER_HPP_
+#endif  // INCLUDE_STACK_HPP_
