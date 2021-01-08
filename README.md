@@ -1,34 +1,34 @@
 # Лабораторная работа №5
 
 ## Задание 1
-Реализовать некопируемый перемещаемый шаблон класса **stack** с методами `pop`, `push`, `head`. 
+Реализовать некопируемый перемещаемый шаблон класса **MyStack** с методами `pop`, `push`, `top`. 
 ```cpp
 template <typename T>
-class stack
+class MyStack
 {
 public:
   void push(T&& value);
   void push(const T& value);
   void pop();
-  const T& head() const;
+  const T& top() const;
 };
 ```
 ⚠️ *Стандартными контейнерами пользоваться **запрещено**.*
 
 ## Задание 2
-Реализовать некопируемый перемещаемый шаблон класса **stack** для некопируемых перемещаемых типов с методами:
+Реализовать некопируемый перемещаемый шаблон класса **MyStack** для некопируемых перемещаемых типов с методами:
 * `push_emplace`, принимающего те же аргументы, что и конструктор для `T`, где `T` - пареметр шаблона;
-* `head`, возвращающего ссылку на верхушку стека;
+* `top`, возвращающего ссылку на верхушку стека;
 * `pop`, выполняющего снятие элемента с верхушки стека.
 ```cpp
 template <typename T>
-class stack
+class MyStack
 {
 public:
   template <typename ... Args>
   void push_emplace(Args&&... value);
   void push(T&& value);
-  const T& head() const;
+  const T& top() const;
   T pop();
 };
 ```
